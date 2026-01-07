@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:typespeed/common/constants/app_colors.dart';
+import 'package:typespeed/features/typing/domain/test_models.dart';
 import 'package:typespeed/features/typing/providers/typing_session_provider.dart';
 
 class ResultView extends HookConsumerWidget {
@@ -23,6 +24,35 @@ class ResultView extends HookConsumerWidget {
       }
       return controller.dispose;
     }, []);
+
+    if (state.status == TestStatus.disqualified) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            HugeIcon(
+              icon: HugeIcons.strokeRoundedAlertCircle,
+              color: AppColors.error,
+              size: 64,
+            ),
+            SizedBox(height: 24),
+            Text(
+              "Cheat Detected!",
+              style: TextStyle(
+                fontSize: 32,
+                color: AppColors.error,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              "Copy-paste is not allowed.",
+              style: TextStyle(fontSize: 16, color: AppColors.textMain),
+            ),
+          ],
+        ),
+      );
+    }
 
     return Stack(
       children: [

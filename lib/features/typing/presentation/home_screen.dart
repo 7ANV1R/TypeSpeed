@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:typespeed/common/constants/app_colors.dart';
+import 'package:typespeed/features/typing/domain/test_models.dart';
 import 'package:typespeed/features/typing/presentation/result_view.dart';
 import 'package:typespeed/features/typing/presentation/typing_area.dart';
 import 'package:typespeed/features/typing/presentation/widgets/mode_selector.dart';
@@ -49,7 +50,9 @@ class HomeScreen extends HookConsumerWidget {
               const SizedBox(height: 50),
 
               Expanded(
-                child: typingState.status == .finished
+                child:
+                    (typingState.status == TestStatus.finished ||
+                        typingState.status == TestStatus.disqualified)
                     ? const ResultView()
                     : const TypingArea(),
               ),

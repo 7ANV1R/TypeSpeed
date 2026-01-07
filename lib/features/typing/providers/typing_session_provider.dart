@@ -186,9 +186,21 @@ class TypingSessionNotifier extends Notifier<TypingState> {
   }
 
   void handleInput(String input) {
-    if (state.status == .finished) return;
+    if (state.status == TestStatus.finished ||
+        state.status == TestStatus.disqualified)
+      return;
 
-    if (state.status == .idle) {
+    // Detect cheating (paste/autosuggestion usually adds >1 char at once)
+    // We allow length increase > 1 only if it's strictly expected? No, never.
+    // However, we must be careful about backspace (length decreases) or replace.
+    // length - oldLength > 1 means sudden addition.
+    if (input.length - state.typedText.length > 1) {
+      _timer?.cancel();
+      state = state.copyWith(status: TestStatus.disqualified);
+      return;
+    }
+
+    if (state.status == TestStatus.idle) {
       start();
     }
 

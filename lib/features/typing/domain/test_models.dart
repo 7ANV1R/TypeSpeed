@@ -26,4 +26,4 @@ class TestSettings {
   int get hashCode => mode.hashCode ^ targetAmount.hashCode;
 }
 
-enum TestStatus { idle, running, finished }
+enum TestStatus { idle, running, finished, disqualified }
