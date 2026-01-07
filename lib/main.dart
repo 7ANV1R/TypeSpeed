@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:typespeed/common/constants/app_colors.dart';
 import 'package:typespeed/features/typing/presentation/home_screen.dart';
 
@@ -24,7 +23,9 @@ class MyApp extends StatelessWidget {
           error: AppColors.error,
           onSurface: AppColors.textMain,
         ),
-        textTheme: GoogleFonts.jetBrainsMonoTextTheme().apply(
+        fontFamily: 'JetBrains Mono',
+        textTheme: const TextTheme().apply(
+          fontFamily: 'JetBrains Mono',
           bodyColor: AppColors.textMain,
           displayColor: AppColors.textMain,
         ),

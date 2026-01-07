@@ -187,8 +187,9 @@ class TypingSessionNotifier extends Notifier<TypingState> {
 
   void handleInput(String input) {
     if (state.status == TestStatus.finished ||
-        state.status == TestStatus.disqualified)
+        state.status == TestStatus.disqualified) {
       return;
+    }
 
     // Detect cheating (paste/autosuggestion usually adds >1 char at once)
     // We allow length increase > 1 only if it's strictly expected? No, never.

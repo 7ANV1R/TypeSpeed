@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:typespeed/common/constants/app_colors.dart';
 
 class WordWrapDisplay extends StatelessWidget {
@@ -178,10 +177,10 @@ class _WordWidget extends HookWidget {
       );
     } // End cursor logic
 
-    return RichText(
-      text: TextSpan(
+    return Text.rich(
+      TextSpan(
         children: spans,
-        style: GoogleFonts.jetBrainsMono(
+        style: const TextStyle(
           fontSize: 24,
           height: 1.5, // Relaxed height prevents baseline shifts
         ),

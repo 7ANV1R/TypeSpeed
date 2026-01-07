@@ -12,7 +12,6 @@ dependencies:
     sdk: flutter
   flutter_animate: ^4.5.2
   flutter_hooks: ^0.21.3+1
-  google_fonts: ^6.3.3
   hooks_riverpod: ^3.1.0
   hugeicons: ^1.1.4
   shared_preferences: ^2.5.4
@@ -20,7 +19,13 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: JetBrains Mono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono-Regular.ttf
+        - asset: assets/fonts/JetBrainsMono-Bold.ttf
+          weight: 700
